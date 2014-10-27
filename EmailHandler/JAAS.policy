@@ -35,3 +35,11 @@ grant codebase "file:./EmailHandler.jar"
 //{  
 //    permission javax.security.auth.AuthPermission "doAsPrivileged";
 //};
+
+grant Principal simplejaasmodule.SimplePrincipal "Jack" {
+    permission "java.util.PropertyPermission" "*", "read,write";
+    permission "java.net.SocketPermission" "smtp.gmail.com", "resolve";
+    permission "java.net.SocketPermission" "*:465", "connect,resolve";
+    permission "java.net.SocketPermission" "*:993", "connect,resolve";
+    permission "java.lang.RuntimePermission" "setFactory";
+};
