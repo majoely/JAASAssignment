@@ -1,3 +1,5 @@
+package JAAS;
+
 /**
    A class that represents a simple JAAS CallbackHandler that just
    uses System.in and System.out to communicate with the user

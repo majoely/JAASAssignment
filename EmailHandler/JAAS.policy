@@ -1,0 +1,37 @@
+/**
+   JAASExample.policy security policy file for running
+   JAASExampleClient with restricted security permissions
+*/
+
+// JAR file with SimpleLogin must be allowed to modify a principal
+grant codebase "file:./Simple.jar"
+{  
+    permission javax.security.auth.AuthPermission "modifyPrincipals";
+};
+
+// JAR file with JAASExampleClient must be allowed to create a SimpleLogin
+// and invoke the doAsPrivledged method
+grant codebase "file:./JAAS.jar"
+{  
+    permission javax.security.auth.AuthPermission "createLoginContext.SimpleLogin";
+    permission javax.security.auth.AuthPermission "doAsPrivileged";
+};
+
+// JAR file with JAASExampleClient must be allowed to write to the
+// file "localfile.txt" if user is authenticated principal "Jack"
+grant codebase "file:./JAAS.jar" Principal simplejaasmodule.SimplePrincipal "Jack"
+{  
+    permission java.io.FilePermission "localfile.txt", "write";
+};
+
+// Jar file must be able to execute EmailHandler.jar
+grant codebase "file:./EmailHandler.jar"
+{  
+    permission javax.security.auth.AuthPermission "doAsPrivileged";
+};
+
+// Jar file must be able to execute javax.mail.jar
+grant codebase "file:./javax.mail.jar"
+{  
+    permission javax.security.auth.AuthPermission "doAsPrivileged";
+};
