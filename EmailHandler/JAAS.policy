@@ -31,7 +31,7 @@ grant codebase "file:./EmailHandler.jar"
 };
 
 // Jar file must be able to execute javax.mail.jar
-grant codebase "file:./javax.mail.jar"
-{  
-    permission javax.security.auth.AuthPermission "doAsPrivileged";
-};
+//grant codebase "file:./javax.mail.jar"
+//{  
+//    permission javax.security.auth.AuthPermission "doAsPrivileged";
+//};
